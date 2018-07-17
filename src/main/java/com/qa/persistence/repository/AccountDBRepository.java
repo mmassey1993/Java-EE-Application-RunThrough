@@ -12,12 +12,17 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import org.apache.log4j.Logger;
+
+import com.qa.business.service.AccountService;
 import com.qa.persistence.domain.Account;
 import com.qa.util.JSONUtil;
 
 @Transactional(SUPPORTS)
 @Default
 public class AccountDBRepository implements AccountRepository {
+	
+	private static final Logger LOGGER = Logger.getLogger(AccountService.class);
 
 	@PersistenceContext(unitName = "primary")
 	private EntityManager manager;
@@ -28,6 +33,7 @@ public class AccountDBRepository implements AccountRepository {
 	public String getAllAccounts() {
 		Query query = manager.createQuery("Select a FROM Account a");
 		Collection<Account> accounts = (Collection<Account>) query.getResultList();
+		LOGGER.info("In AccountDBRepository getAllAccounts ");
 		return util.getJSONForObject(accounts);
 	}
 
@@ -35,6 +41,7 @@ public class AccountDBRepository implements AccountRepository {
 	public String createAccount(String account) {
 		Account anAccount = util.getObjectForJSON(account, Account.class);
 		manager.persist(anAccount);
+		LOGGER.info("In AccountDBRepository createAccount ");
 		return "{\"message\": \"account has been sucessfully added\"}";
 	}
 
@@ -47,6 +54,7 @@ public class AccountDBRepository implements AccountRepository {
 			accountFromDB.setId(id);
 			manager.merge(accountFromDB);
 		}
+		LOGGER.info("In AccountDBRepository updateAccount ");
 		return "{\"message\": \"account sucessfully updated\"}";
 	}
 
@@ -56,6 +64,7 @@ public class AccountDBRepository implements AccountRepository {
 		if (accountInDB != null) {
 			manager.remove(accountInDB);
 		}
+		LOGGER.info("In AccountDBRepository deleteAccount ");
 		return "{\"message\": \"account sucessfully deleted\"}";
 	}
 

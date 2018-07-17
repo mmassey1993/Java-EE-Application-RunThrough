@@ -1,4 +1,5 @@
-INSERT INTO ACCOUNT (id, firstname, secondname, accountnumber) VALUES (1, 'John', 'Doe', '1234')
-INSERT INTO ACCOUNT (id, firstname, secondname, accountnumber) VALUES (2, 'Jane', 'Stevens', '3344')
-INSERT INTO ACCOUNT (id, firstname, secondname, accountnumber) VALUES (3, 'Sam', 'Tim', '0001')
+INSERT INTO ACCOUNT (id, firstname, secondname, accountnumber, dob) VALUES (1, 'John', 'Doe', 'A54321', '1985-08-13')
+INSERT INTO ACCOUNT (id, firstname, secondname, accountnumber, dob) VALUES (2, 'Jane', 'Stevens', 'A12345', '1982-06-10')
+INSERT INTO ACCOUNT (id, firstname, secondname, accountnumber, dob) VALUES (3, 'Sam', 'Tim', 'F78965', '1995-04-17')
+INSERT INTO ACCOUNT (id, firstname, secondname, accountnumber, dob) VALUES (4, 'Harold', 'Benny', '000000', '2000-11-29')
 INSERT INTO TRANSACTION (id, transactionname, account_id) VALUES (1, 'sample', 1)
