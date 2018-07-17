@@ -28,9 +28,9 @@ public class Account {
 	@Size(min = 6, max = 6)
 	@Pattern(regexp = "\\D\\d\\d\\d\\d\\d")
 	private String accountNumber;
-	@Past
-	@Temporal(TemporalType.DATE)
-	private Date DOB;
+//	@Past
+//	@Temporal(TemporalType.DATE)
+//	private Date DOB;
 	@JoinColumn(name = "account_id")
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Transaction> transaction;
@@ -86,12 +86,12 @@ public class Account {
 		this.transaction = transaction;
 	}
 	
-	public Date getDOB() {
-		return DOB;
-	}
-
-	public void setDOB(Date dOB) {
-		DOB = dOB;
-	}
+//	public Date getDOB() {
+//		return DOB;
+//	}
+//
+//	public void setDOB(Date dOB) {
+//		DOB = dOB;
+//	}
 
 }
